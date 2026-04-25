@@ -44,6 +44,7 @@ Kirigami.FormLayout {
             from: 0.0
             to: 1.0
             stepSize: 0.05
+            value: 0.7
             Layout.preferredWidth: Kirigami.Units.gridUnit * 12
         }
         QQC2.Label {

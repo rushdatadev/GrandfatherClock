@@ -34,7 +34,7 @@ Item {
     }
 
     function _resolve(name) {
-        return soundsDir + name + ".au"
+        return soundsDir + name + ".wav"
     }
 
     function playNext() {
