@@ -8,3 +8,6 @@ build/
 *.kdev4
 .idea/
 .vscode/
+
+# Re-derivable from "From Claude Design/Grandfather Clock face.zip"
+From Claude Design/extracted/

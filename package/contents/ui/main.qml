@@ -36,6 +36,7 @@ PlasmoidItem {
     compactRepresentation: ClockFace {
         currentTime: root.currentTime
         showSeconds: Plasmoid.configuration.showSeconds
+        variant: Plasmoid.configuration.clockFace
         Layout.minimumWidth: Kirigami.Units.gridUnit * 4
         Layout.minimumHeight: Kirigami.Units.gridUnit * 4
         MouseArea {

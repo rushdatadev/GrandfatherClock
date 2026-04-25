@@ -27,6 +27,7 @@ ColumnLayout {
         Layout.preferredHeight: Kirigami.Units.gridUnit * 14
         currentTime: root.currentTime
         showSeconds: Plasmoid.configuration.showSeconds
+        variant: Plasmoid.configuration.clockFace
     }
 
     RowLayout {

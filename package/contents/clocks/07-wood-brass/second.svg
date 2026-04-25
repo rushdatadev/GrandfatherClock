@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+    <g transform="translate(512,512)">
+      <line x1="0" y1="50" x2="0" y2="-420" stroke="#caa23a" stroke-width="2"></line>
+      <circle cy="-360" r="8" fill="none" stroke="#caa23a" stroke-width="1.5"></circle>
+    </g></svg>

@@ -39,8 +39,8 @@
 
     <group name="Appearance">
         <entry name="clockFace" type="String">
-            <label>Clock face style identifier</label>
-            <default>default</default>
+            <label>Clock face variant id (matches folder name under contents/clocks/)</label>
+            <default>07-wood-brass</default>
         </entry>
         <entry name="showSeconds" type="Bool">
             <label>Show second hand</label>
