@@ -29,6 +29,14 @@ commercial redistribution. BHI's "non-commercial use only" notice is
 therefore **incompatible with embedding these sequences directly in the
 GPL-licensed widget package** without explicit permission from BHI.
 
+### Permission status
+
+> **2026-04-25:** A usage-permission request was sent to
+> `education@bhi.co.uk` covering the content of
+> http://www.bhi.co.uk/aHints/chimes.html for use in this GPL-2.0
+> open-source project. Awaiting reply. Update this section when a
+> response arrives (granted / denied / conditional).
+
 Practical options, in order of safety:
 
 1. **Use this file as developer-only reference.** Do not bake BHI's
