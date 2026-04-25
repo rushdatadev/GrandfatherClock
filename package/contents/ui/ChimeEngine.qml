@@ -13,7 +13,7 @@ Item {
     readonly property url soundsDir: Qt.resolvedUrl("../sounds/")
 
     property var queue: []
-    property int lastChimedMinute: -1
+    property bool _busy: false
 
     AudioOutput {
         id: audioOut
@@ -23,13 +23,20 @@ Item {
     MediaPlayer {
         id: player
         audioOutput: audioOut
-        onPlaybackStateChanged: {
-            if (playbackState === MediaPlayer.StoppedState && engine.queue.length > 0) {
+        onMediaStatusChanged: {
+            if (mediaStatus === MediaPlayer.EndOfMedia) {
+                engine._busy = false
+                engine.playNext()
+            } else if (mediaStatus === MediaPlayer.InvalidMedia) {
+                console.warn("[GFC] InvalidMedia for " + source)
+                engine._busy = false
                 engine.playNext()
             }
         }
-        onErrorOccurred: (error, errorString) => {
-            console.warn("ChimeEngine playback error:", error, errorString, "for", source)
+        onErrorOccurred: (err, str) => {
+            console.warn("[GFC] MediaPlayer error " + err + ": " + str + "  source=" + source)
+            engine._busy = false
+            engine.playNext()
         }
     }
 
@@ -38,18 +45,26 @@ Item {
     }
 
     function playNext() {
-        if (queue.length === 0) return
+        if (queue.length === 0) {
+            _busy = false
+            return
+        }
+        if (_busy) {
+            // Already playing; EndOfMedia will re-call us.
+            return
+        }
         const next = queue.shift()
-        console.log("[GFC] playNext source=" + next + "  vol=" + audioOut.volume + "  muted-engine-vol=" + engine.volume)
+        _busy = true
+        console.log("[GFC] playNext source=" + next + "  vol=" + audioOut.volume + "  qlen-after-shift=" + queue.length)
         player.source = next
         player.play()
     }
 
     function _enqueue(name) {
         const url = _resolve(name)
-        console.log("[GFC] enqueue " + name + " -> " + url + "  state=" + player.playbackState + "  qlen=" + queue.length)
         queue.push(url)
-        if (player.playbackState !== MediaPlayer.PlayingState) {
+        console.log("[GFC] enqueue " + name + "  busy=" + _busy + "  qlen=" + queue.length)
+        if (!_busy) {
             playNext()
         }
     }
@@ -95,4 +110,6 @@ Item {
             _enqueue(quarterChimeSet + "3")
         }
     }
+
+    property int lastChimedMinute: -1
 }
