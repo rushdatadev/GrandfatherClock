@@ -49,7 +49,4 @@ PlasmoidItem {
         currentTime: root.currentTime
         chimeEngine: chimeEngine
     }
-
-    toolTipMainText: i18n("Grandfather Clock")
-    toolTipSubText: Qt.formatTime(currentTime, "h:mm AP")
 }
