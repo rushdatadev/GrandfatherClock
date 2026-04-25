@@ -9,7 +9,7 @@ ColumnLayout {
     id: root
 
     property date currentTime: new Date()
-    property var chimeEngine
+    property var engine
 
     Layout.preferredWidth: Kirigami.Units.gridUnit * 18
     Layout.preferredHeight: Kirigami.Units.gridUnit * 22
@@ -63,11 +63,11 @@ ColumnLayout {
 
         QQC2.Button {
             text: i18n("Test Hour")
-            onClicked: root.chimeEngine.previewHourly(root.currentTime.getHours())
+            onClicked: root.engine.previewHourly(root.currentTime.getHours())
         }
         QQC2.Button {
             text: i18n("Test Quarter")
-            onClicked: root.chimeEngine.previewQuarter(1)
+            onClicked: root.engine.previewQuarter(1)
         }
     }
 }

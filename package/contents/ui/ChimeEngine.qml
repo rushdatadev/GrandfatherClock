@@ -40,19 +40,22 @@ Item {
     function playNext() {
         if (queue.length === 0) return
         const next = queue.shift()
+        console.log("[GFC] playNext source=" + next + "  vol=" + audioOut.volume + "  muted-engine-vol=" + engine.volume)
         player.source = next
         player.play()
     }
 
     function _enqueue(name) {
-        queue.push(_resolve(name))
+        const url = _resolve(name)
+        console.log("[GFC] enqueue " + name + " -> " + url + "  state=" + player.playbackState + "  qlen=" + queue.length)
+        queue.push(url)
         if (player.playbackState !== MediaPlayer.PlayingState) {
             playNext()
         }
     }
 
     function previewHourly(hour) {
-        // Simulate the on-the-hour chime for testing in config UI.
+        console.log("[GFC] previewHourly(" + hour + ")  interval=" + chimeInterval + "  bellCount=" + bellCount + "  hourChime=" + hourChime)
         if (chimeInterval === "quarterly") {
             _enqueue(quarterChimeSet + "4")
         }
@@ -63,7 +66,7 @@ Item {
     }
 
     function previewQuarter(which) {
-        // which: 1, 2, or 3
+        console.log("[GFC] previewQuarter(" + which + ")  set=" + quarterChimeSet)
         _enqueue(quarterChimeSet + which)
     }
 

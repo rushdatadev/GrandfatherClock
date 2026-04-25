@@ -9,6 +9,9 @@ build/
 .idea/
 .vscode/
 
+# User-captured runtime logs (journalctl tees, etc.)
+runtime-logs/
+
 # Re-derivable from "From Claude Design/Grandfather Clock face.zip"
 From Claude Design/extracted/
 

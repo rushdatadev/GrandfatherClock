@@ -47,6 +47,6 @@ PlasmoidItem {
 
     fullRepresentation: FullRepresentation {
         currentTime: root.currentTime
-        chimeEngine: chimeEngine
+        engine: chimeEngine
     }
 }
