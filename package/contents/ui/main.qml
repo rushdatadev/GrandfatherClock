@@ -50,6 +50,6 @@ PlasmoidItem {
         chimeEngine: chimeEngine
     }
 
-    Plasmoid.toolTipMainText: i18n("Grandfather Clock")
-    Plasmoid.toolTipSubText: Qt.formatTime(currentTime, "h:mm AP")
+    toolTipMainText: i18n("Grandfather Clock")
+    toolTipSubText: Qt.formatTime(currentTime, "h:mm AP")
 }
