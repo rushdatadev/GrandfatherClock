@@ -1,0 +1,21 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "drwoodard72@gmail.com",
+                "Name": "David Woodard"
+            }
+        ],
+        "Category": "Date and Time",
+        "Description": "Analog grandfather clock with Westminster chimes, hourly tolls, and quarter-chime support. Audio resources from Dr. Robert J. Meier, Jr.'s grandfatherclock 1.0.3.",
+        "Icon": "clock",
+        "Id": "local.grandfatherclock",
+        "License": "GPL-2.0-only",
+        "Name": "Grandfather Clock",
+        "Version": "0.1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml"
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name=""/>
+
+    <group name="General">
+        <entry name="chimeInterval" type="String">
+            <label>Chime interval: hourly, half, or quarterly</label>
+            <default>hourly</default>
+        </entry>
+        <entry name="bellCount" type="Bool">
+            <label>Toll the bell once per hour number (12 at noon, 3 at 3pm, etc.)</label>
+            <default>true</default>
+        </entry>
+        <entry name="volume" type="Double">
+            <label>Master volume (0.0 - 1.0)</label>
+            <default>0.7</default>
+            <min>0.0</min>
+            <max>1.0</max>
+        </entry>
+        <entry name="muted" type="Bool">
+            <label>Mute all chimes</label>
+            <default>false</default>
+        </entry>
+    </group>
+
+    <group name="Chimes">
+        <entry name="hourChime" type="String">
+            <label>Sound file (no extension) used for the hourly toll</label>
+            <default>Grandfather</default>
+        </entry>
+        <entry name="quarterChimeSet" type="String">
+            <label>Quarter-chime set prefix (Westminister or CloseEncountersOfTheThirdKind)</label>
+            <default>Westminister</default>
+        </entry>
+    </group>
+
+    <group name="Appearance">
+        <entry name="clockFace" type="String">
+            <label>Clock face style identifier</label>
+            <default>default</default>
+        </entry>
+        <entry name="showSeconds" type="Bool">
+            <label>Show second hand</label>
+            <default>true</default>
+        </entry>
+    </group>
+</kcfg>
