@@ -18,14 +18,26 @@ KCM.SimpleKCM {
     property string cfg_chimeIntervalDefault: "hourly"
     property bool cfg_bellCount: true
     property bool cfg_bellCountDefault: true
-    property int cfg_volume: 70
-    property int cfg_volumeDefault: 70
+    property int cfg_volume: 25
+    property int cfg_volumeDefault: 25
     property bool cfg_muted: false
     property bool cfg_mutedDefault: false
-    property string cfg_hourChime: "Grandfather"
-    property string cfg_hourChimeDefault: "Grandfather"
-    property string cfg_quarterChimeSet: "Westminister"
-    property string cfg_quarterChimeSetDefault: "Westminister"
+    property bool cfg_quietHoursEnabled: false
+    property bool cfg_quietHoursEnabledDefault: false
+    property int cfg_quietStartHour: 22
+    property int cfg_quietStartHourDefault: 22
+    property int cfg_quietStartMinute: 0
+    property int cfg_quietStartMinuteDefault: 0
+    property int cfg_quietEndHour: 7
+    property int cfg_quietEndHourDefault: 7
+    property int cfg_quietEndMinute: 0
+    property int cfg_quietEndMinuteDefault: 0
+    property int cfg_fadeDurationMs: 80
+    property int cfg_fadeDurationMsDefault: 80
+    property string cfg_hourChime: "BigBenHourBell"
+    property string cfg_hourChimeDefault: "BigBenHourBell"
+    property string cfg_quarterChimeSet: "BigBenWestminster"
+    property string cfg_quarterChimeSetDefault: "BigBenWestminster"
 
     Kirigami.FormLayout {
         QQC2.ComboBox {

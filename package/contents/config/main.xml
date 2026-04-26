@@ -16,7 +16,7 @@
         </entry>
         <entry name="volume" type="Int">
             <label>Master volume percentage (0-100)</label>
-            <default>70</default>
+            <default>25</default>
             <min>0</min>
             <max>100</max>
         </entry>
@@ -24,16 +24,50 @@
             <label>Mute all chimes</label>
             <default>false</default>
         </entry>
+        <entry name="quietHoursEnabled" type="Bool">
+            <label>Skip chimes during a configured time window</label>
+            <default>false</default>
+        </entry>
+        <entry name="quietStartHour" type="Int">
+            <label>Quiet hours start hour (0-23)</label>
+            <default>22</default>
+            <min>0</min>
+            <max>23</max>
+        </entry>
+        <entry name="quietStartMinute" type="Int">
+            <label>Quiet hours start minute (0-59)</label>
+            <default>0</default>
+            <min>0</min>
+            <max>59</max>
+        </entry>
+        <entry name="quietEndHour" type="Int">
+            <label>Quiet hours end hour (0-23)</label>
+            <default>7</default>
+            <min>0</min>
+            <max>23</max>
+        </entry>
+        <entry name="quietEndMinute" type="Int">
+            <label>Quiet hours end minute (0-59)</label>
+            <default>0</default>
+            <min>0</min>
+            <max>59</max>
+        </entry>
+        <entry name="fadeDurationMs" type="Int">
+            <label>Fade in/out duration in ms (0 disables fade)</label>
+            <default>80</default>
+            <min>0</min>
+            <max>500</max>
+        </entry>
     </group>
 
     <group name="Chimes">
         <entry name="hourChime" type="String">
-            <label>Sound file (no extension) used for the hourly toll</label>
-            <default>Grandfather</default>
+            <label>Bell base name used for the hourly toll (resolves under sounds/bells/)</label>
+            <default>BigBenHourBell</default>
         </entry>
         <entry name="quarterChimeSet" type="String">
-            <label>Quarter-chime set prefix (Westminister or CloseEncountersOfTheThirdKind)</label>
-            <default>Westminister</default>
+            <label>Quarter-chime set prefix (resolves under sounds/chimes/)</label>
+            <default>BigBenWestminster</default>
         </entry>
     </group>
 

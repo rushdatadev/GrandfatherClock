@@ -31,6 +31,12 @@ PlasmoidItem {
         bellCount: Plasmoid.configuration.bellCount
         hourChime: Plasmoid.configuration.hourChime
         quarterChimeSet: Plasmoid.configuration.quarterChimeSet
+        quietHoursEnabled: Plasmoid.configuration.quietHoursEnabled
+        quietStartHour: Plasmoid.configuration.quietStartHour
+        quietStartMinute: Plasmoid.configuration.quietStartMinute
+        quietEndHour: Plasmoid.configuration.quietEndHour
+        quietEndMinute: Plasmoid.configuration.quietEndMinute
+        fadeDurationMs: Plasmoid.configuration.fadeDurationMs
     }
 
     compactRepresentation: ClockFace {
@@ -47,6 +53,5 @@ PlasmoidItem {
 
     fullRepresentation: FullRepresentation {
         currentTime: root.currentTime
-        engine: chimeEngine
     }
 }
