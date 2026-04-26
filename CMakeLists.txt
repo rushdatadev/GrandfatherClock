@@ -10,4 +10,4 @@ include(ECMQMLModules NO_POLICY_SCOPE OPTIONAL)
 
 find_package(Plasma REQUIRED)
 
-plasma_install_package(package local.grandfatherclock)
+plasma_install_package(package com.github.rushdatadev.GrandfatherClock)

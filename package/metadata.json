@@ -10,10 +10,11 @@
         "Category": "Date and Time",
         "Description": "Analog grandfather clock with Westminster chimes, hourly tolls, and quarter-chime support. Audio resources from Dr. Robert J. Meier, Jr.'s grandfatherclock 1.0.3.",
         "Icon": "clock",
-        "Id": "local.grandfatherclock",
+        "Id": "com.github.rushdatadev.GrandfatherClock",
         "License": "GPL-2.0-only",
         "Name": "Grandfather Clock",
-        "Version": "0.1.0"
+        "Version": "0.1.0",
+        "Website": "https://github.com/rushdatadev/GrandfatherClock"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-API": "declarativeappletscript",
