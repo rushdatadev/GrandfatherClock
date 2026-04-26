@@ -7,8 +7,25 @@ import org.kde.kcmutils as KCM
 KCM.SimpleKCM {
     id: page
 
-    property alias cfg_clockFace: faceCombo.currentValue
-    property alias cfg_showSeconds: secondsCheck.checked
+    // Settings owned by this page
+    property string cfg_clockFace: "07-wood-brass"
+    property string cfg_clockFaceDefault: "07-wood-brass"
+    property bool cfg_showSeconds: true
+    property bool cfg_showSecondsDefault: true
+
+    // Cross-page stubs
+    property string cfg_chimeInterval: "hourly"
+    property string cfg_chimeIntervalDefault: "hourly"
+    property bool cfg_bellCount: true
+    property bool cfg_bellCountDefault: true
+    property int cfg_volume: 70
+    property int cfg_volumeDefault: 70
+    property bool cfg_muted: false
+    property bool cfg_mutedDefault: false
+    property string cfg_hourChime: "Grandfather"
+    property string cfg_hourChimeDefault: "Grandfather"
+    property string cfg_quarterChimeSet: "Westminister"
+    property string cfg_quarterChimeSetDefault: "Westminister"
 
     Kirigami.FormLayout {
         QQC2.ComboBox {
@@ -26,20 +43,15 @@ KCM.SimpleKCM {
                 { label: i18n("Skeuomorphic wood + brass"),  value: "07-wood-brass" },
                 { label: i18n("Flat geometric"),             value: "08-flat" }
             ]
-            Component.onCompleted: {
-                for (let i = 0; i < model.length; i++) {
-                    if (model[i].value === cfg_clockFace) {
-                        currentIndex = i
-                        break
-                    }
-                }
-            }
+            currentIndex: model.findIndex(m => m.value === page.cfg_clockFace)
+            onActivated: page.cfg_clockFace = model[currentIndex].value
         }
 
         QQC2.CheckBox {
-            id: secondsCheck
             Kirigami.FormData.label: i18n("Second hand:")
             text: i18n("Show the second hand")
+            checked: page.cfg_showSeconds
+            onToggled: page.cfg_showSeconds = checked
         }
 
         ClockFace {
@@ -47,7 +59,7 @@ KCM.SimpleKCM {
             Layout.preferredWidth: Kirigami.Units.gridUnit * 12
             Layout.preferredHeight: Kirigami.Units.gridUnit * 12
             variant: faceCombo.currentValue
-            showSeconds: secondsCheck.checked
+            showSeconds: page.cfg_showSeconds
             currentTime: previewClock.now
 
             Timer {

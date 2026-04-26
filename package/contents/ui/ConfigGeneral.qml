@@ -7,10 +7,27 @@ import org.kde.kcmutils as KCM
 KCM.SimpleKCM {
     id: page
 
-    property alias cfg_chimeInterval: intervalCombo.currentValue
-    property alias cfg_bellCount: bellCountCheck.checked
-    property alias cfg_volume: volumeSlider.value
-    property alias cfg_muted: muteCheck.checked
+    // Settings owned by this page
+    property string cfg_chimeInterval: "hourly"
+    property string cfg_chimeIntervalDefault: "hourly"
+    property bool cfg_bellCount: true
+    property bool cfg_bellCountDefault: true
+    property int cfg_volume: 70
+    property int cfg_volumeDefault: 70
+    property bool cfg_muted: false
+    property bool cfg_mutedDefault: false
+
+    // Cross-page stubs — Plasma's KConfigXT pushes every kcfg entry
+    // onto every page; declaring stubs silences "page does not have
+    // property cfg_X" warnings without binding UI here.
+    property string cfg_hourChime: "Grandfather"
+    property string cfg_hourChimeDefault: "Grandfather"
+    property string cfg_quarterChimeSet: "Westminister"
+    property string cfg_quarterChimeSetDefault: "Westminister"
+    property string cfg_clockFace: "07-wood-brass"
+    property string cfg_clockFaceDefault: "07-wood-brass"
+    property bool cfg_showSeconds: true
+    property bool cfg_showSecondsDefault: true
 
     Kirigami.FormLayout {
         QQC2.ComboBox {
@@ -23,41 +40,37 @@ KCM.SimpleKCM {
                 { label: i18n("Half-hourly"), value: "half" },
                 { label: i18n("Quarterly (Westminster)"), value: "quarterly" }
             ]
-            Component.onCompleted: {
-                for (let i = 0; i < model.length; i++) {
-                    if (model[i].value === cfg_chimeInterval) {
-                        currentIndex = i
-                        break
-                    }
-                }
-            }
+            currentIndex: model.findIndex(m => m.value === page.cfg_chimeInterval)
+            onActivated: page.cfg_chimeInterval = model[currentIndex].value
         }
 
         QQC2.CheckBox {
-            id: bellCountCheck
             Kirigami.FormData.label: i18n("Bell count:")
             text: i18n("Toll the bell once per hour number (e.g. 3 tolls at 3 o'clock)")
+            checked: page.cfg_bellCount
+            onToggled: page.cfg_bellCount = checked
         }
 
-        RowLayout {
+        QQC2.Slider {
+            id: volumeSlider
             Kirigami.FormData.label: i18n("Volume:")
-            QQC2.Slider {
-                id: volumeSlider
-                from: 0.0
-                to: 1.0
-                stepSize: 0.05
-                value: 0.7
-                Layout.preferredWidth: Kirigami.Units.gridUnit * 12
-            }
-            QQC2.Label {
-                text: Math.round(volumeSlider.value * 100) + "%"
-            }
+            from: 0
+            to: 100
+            stepSize: 5
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 14
+            value: page.cfg_volume
+            onMoved: page.cfg_volume = value
+        }
+
+        QQC2.Label {
+            text: page.cfg_volume + "%"
         }
 
         QQC2.CheckBox {
-            id: muteCheck
             Kirigami.FormData.label: i18n("Mute:")
             text: i18n("Silence all chimes")
+            checked: page.cfg_muted
+            onToggled: page.cfg_muted = checked
         }
     }
 }

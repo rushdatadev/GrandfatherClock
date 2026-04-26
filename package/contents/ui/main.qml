@@ -26,7 +26,7 @@ PlasmoidItem {
 
     ChimeEngine {
         id: chimeEngine
-        volume: Plasmoid.configuration.muted ? 0 : Plasmoid.configuration.volume
+        volume: Plasmoid.configuration.muted ? 0 : (Plasmoid.configuration.volume / 100)
         chimeInterval: Plasmoid.configuration.chimeInterval
         bellCount: Plasmoid.configuration.bellCount
         hourChime: Plasmoid.configuration.hourChime

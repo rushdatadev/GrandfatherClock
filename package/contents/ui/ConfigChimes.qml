@@ -7,8 +7,25 @@ import org.kde.kcmutils as KCM
 KCM.SimpleKCM {
     id: page
 
-    property alias cfg_hourChime: hourCombo.currentValue
-    property alias cfg_quarterChimeSet: quarterCombo.currentValue
+    // Settings owned by this page
+    property string cfg_hourChime: "Grandfather"
+    property string cfg_hourChimeDefault: "Grandfather"
+    property string cfg_quarterChimeSet: "Westminister"
+    property string cfg_quarterChimeSetDefault: "Westminister"
+
+    // Cross-page stubs
+    property string cfg_chimeInterval: "hourly"
+    property string cfg_chimeIntervalDefault: "hourly"
+    property bool cfg_bellCount: true
+    property bool cfg_bellCountDefault: true
+    property int cfg_volume: 70
+    property int cfg_volumeDefault: 70
+    property bool cfg_muted: false
+    property bool cfg_mutedDefault: false
+    property string cfg_clockFace: "07-wood-brass"
+    property string cfg_clockFaceDefault: "07-wood-brass"
+    property bool cfg_showSeconds: true
+    property bool cfg_showSecondsDefault: true
 
     Kirigami.FormLayout {
         QQC2.ComboBox {
@@ -21,14 +38,8 @@ KCM.SimpleKCM {
                 { label: i18n("Tower"), value: "Tower" },
                 { label: i18n("Cuckoo"), value: "Cuckoo" }
             ]
-            Component.onCompleted: {
-                for (let i = 0; i < model.length; i++) {
-                    if (model[i].value === cfg_hourChime) {
-                        currentIndex = i
-                        break
-                    }
-                }
-            }
+            currentIndex: model.findIndex(m => m.value === page.cfg_hourChime)
+            onActivated: page.cfg_hourChime = model[currentIndex].value
         }
 
         QQC2.ComboBox {
@@ -40,14 +51,8 @@ KCM.SimpleKCM {
                 { label: i18n("Westminster"), value: "Westminister" },
                 { label: i18n("Close Encounters of the Third Kind"), value: "CloseEncountersOfTheThirdKind" }
             ]
-            Component.onCompleted: {
-                for (let i = 0; i < model.length; i++) {
-                    if (model[i].value === cfg_quarterChimeSet) {
-                        currentIndex = i
-                        break
-                    }
-                }
-            }
+            currentIndex: model.findIndex(m => m.value === page.cfg_quarterChimeSet)
+            onActivated: page.cfg_quarterChimeSet = model[currentIndex].value
         }
 
         QQC2.Label {

@@ -14,11 +14,11 @@
             <label>Toll the bell once per hour number (12 at noon, 3 at 3pm, etc.)</label>
             <default>true</default>
         </entry>
-        <entry name="volume" type="Double">
-            <label>Master volume (0.0 - 1.0)</label>
-            <default>0.7</default>
-            <min>0.0</min>
-            <max>1.0</max>
+        <entry name="volume" type="Int">
+            <label>Master volume percentage (0-100)</label>
+            <default>70</default>
+            <min>0</min>
+            <max>100</max>
         </entry>
         <entry name="muted" type="Bool">
             <label>Mute all chimes</label>
